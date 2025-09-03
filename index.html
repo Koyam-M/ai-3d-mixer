@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ja">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI 3D Sound Mixer</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div id="canvas-container"></div>
+
+    <div id="controls-panel">
+      <h2>操作パネル</h2>
+
+      <div class="control-group">
+        <h3>AI 音源分離</h3>
+        <input type="file" id="ai-upload-input" accept=".mp3,.wav,.m4a" />
+        <button id="ai-upload-btn">曲をアップロードして分離</button>
+        <div id="ai-status" style="margin-top: 10px"></div>
+        <div class="loader" id="ai-loader"></div>
+      </div>
+
+      <div class="info">
+        オブジェクトを選択し、<br />
+        「記録開始」を押して<br />
+        動きを記録します。
+      </div>
+
+      <div class="control-group">
+        <h3>サウンド操作</h3>
+        <button id="play-btn" disabled>全て再生</button>
+        <button id="stop-btn" disabled>全て停止</button>
+      </div>
+
+      <div class="control-group">
+        <h3>オブジェクト選択</h3>
+        <button id="select-drums-btn">Drums (赤)</button>
+        <button id="select-bass-btn">Bass (緑)</button>
+        <button id="select-melody-btn">Melody (青)</button>
+        <button id="select-vocals-btn">Vocals (黄)</button>
+        <button id="select-piano-btn">Piano (紫)</button>
+      </div>
+
+      <div class="control-group">
+        <h3>記録操作</h3>
+        <button id="record-start-btn" disabled>記録開始</button>
+        <button id="record-stop-btn" disabled>記録停止</button>
+        <button id="clear-path-btn">選択中の記録をクリア</button>
+        <button id="save-motion-btn">動きを保存</button>
+        <button id="load-motion-btn">動きを読込</button>
+        <input
+          type="file"
+          id="motion-file-input"
+          style="display: none"
+          accept=".json"
+        />
+      </div>
+
+      <div class="control-group">
+        <h3>動きの再生</h3>
+        <button id="play-motion-btn">再生</button>
+        <button id="rewind-selected-btn">選択中を初期位置へ</button>
+        <button id="rewind-all-btn">全て初期位置へ</button>
+      </div>
+
+      <div class="control-group">
+        <h3>Drums (赤 - 箱)</h3>
+        <input type="file" id="drums-upload" accept=".mp3,.wav,.m4a" />
+        <input
+          type="range"
+          id="drums-volume"
+          min="0"
+          max="1"
+          step="0.01"
+          value="0.5"
+        />
+      </div>
+      <div class="control-group">
+        <h3>Bass (緑 - 球)</h3>
+        <input type="file" id="bass-upload" accept=".mp3,.wav,.m4a" />
+        <input
+          type="range"
+          id="bass-volume"
+          min="0"
+          max="1"
+          step="0.01"
+          value="0.5"
+        />
+      </div>
+      <div class="control-group">
+        <h3>Melody (青 - 円錐)</h3>
+        <input type="file" id="melody-upload" accept=".mp3,.wav,.m4a" />
+        <input
+          type="range"
+          id="melody-volume"
+          min="0"
+          max="1"
+          step="0.01"
+          value="0.5"
+        />
+      </div>
+
+      <div class="control-group">
+        <h3>Vocals (黄 - ドーナツ)</h3>
+        <input type="file" id="vocals-upload" accept=".mp3,.wav,.m4a" />
+        <input
+          type="range"
+          id="vocals-volume"
+          min="0"
+          max="5"
+          step="0.01"
+          value="0.5"
+        />
+      </div>
+      <div class="control-group">
+        <h3>Piano (紫 - 円柱)</h3>
+        <input type="file" id="piano-upload" accept=".mp3,.wav,.m4a" />
+        <input
+          type="range"
+          id="piano-volume"
+          min="0"
+          max="1"
+          step="0.01"
+          value="0.5"
+        />
+      </div>
+    </div>
+
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "https://unpkg.com/three@0.161.0/build/three.module.js",
+          "three/addons/": "https://unpkg.com/three@0.161.0/examples/jsm/"
+        }
+      }
+    </script>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>

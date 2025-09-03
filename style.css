@@ -1,0 +1,96 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  font-family: sans-serif;
+  background-color: #111;
+}
+body {
+  display: flex;
+}
+#canvas-container {
+  flex-grow: 1;
+  height: 100%;
+}
+#controls-panel {
+  width: 300px;
+  height: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+  background-color: #282c34;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  /* ▼▼▼ 以下の2行を追加 ▼▼▼ */
+  overflow-y: auto; /* Y軸（縦方向）にはみ出したら自動でスクロールバーを表示 */
+  padding-right: 25px; /* スクロールバーのスペースを確保 */
+}
+.info {
+  font-size: 0.9em;
+  padding: 10px;
+  background-color: #3a4049;
+  border-radius: 5px;
+}
+h2,
+h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  border-bottom: 1px solid #555;
+  padding-bottom: 5px;
+}
+button {
+  font-size: 1em;
+  padding: 10px 15px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  background-color: #61dafb;
+  color: #282c34;
+}
+button:disabled {
+  background-color: #4a505a;
+  cursor: not-allowed;
+}
+/* style.css の末尾に追加 */
+.volume-controls {
+  margin-top: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px; /* 各スライダー間の隙間 */
+}
+.volume-controls label {
+  font-size: 0.9em;
+}
+input[type="range"] {
+  width: 100%; /* 幅をパネルいっぱいに */
+}
+
+/* style.css の一番下に追加 */
+
+/* ローディングアニメーションのスタイル */
+.loader {
+  border: 4px solid #f3f3f3; /* Light grey */
+  border-top: 4px solid #3498db; /* Blue */
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+  animation: spin 2s linear infinite;
+  margin-top: 10px;
+  display: none; /* 最初は非表示 */
+}
+
+/* 回転アニメーションの定義 */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
